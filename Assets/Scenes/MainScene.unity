@@ -271,6 +271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrashCounter
       objectReference: {fileID: 0}
+    - target: {fileID: 3233218112539895435, guid: 07853d0a6440c32488a43cd4115a2937,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07853d0a6440c32488a43cd4115a2937, type: 3}
 --- !u!4 &239025087 stripped
