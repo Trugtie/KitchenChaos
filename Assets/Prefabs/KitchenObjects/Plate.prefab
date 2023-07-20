@@ -562,6 +562,12 @@ PrefabInstance:
       propertyPath: plateKitchenObject
       value: 
       objectReference: {fileID: 1946264130138903604}
+    - target: {fileID: 7854608355218318927, guid: 10e39c981f2de6441b54efde32ced8f0,
+        type: 3}
+      propertyPath: kitchenObjectSOGameObjectList.Array.data[3].kitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 54869824e1ef8324e95f5a2b44d4e1a1,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10e39c981f2de6441b54efde32ced8f0, type: 3}
 --- !u!4 &7773242078994316839 stripped
