@@ -23,7 +23,6 @@ public class ProcessBarUI : MonoBehaviour
 
     private void HasProgress_OnProgressChanged(object sender, IHasProgress.OnProgressChangeEventArgs e)
     {
-        Debug.Log("progressChanged");
         barImage.fillAmount = e.progressNormalized;
 
         if (e.progressNormalized == 0f || e.progressNormalized == 1f)
