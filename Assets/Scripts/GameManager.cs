@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private State state;
     private float countDownTimer = 3f;
     private float gamePlayingTimer;
-    private float gamePlayingTimerMax = 300f;
+    private float gamePlayingTimerMax = 90f;
     private bool isPaused = false;
 
     private void Awake()
@@ -118,5 +118,10 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;
             OnGameUnPaused?.Invoke(this, EventArgs.Empty);
         }
+    }
+
+    public void AddMorePlayTime(float time)
+    {
+        this.gamePlayingTimer += time;
     }
 }

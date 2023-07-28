@@ -17,6 +17,8 @@ public class DeliveryUI : MonoBehaviour
     [SerializeField] private Sprite successIcon;
     [SerializeField] private Sprite failIcon;
 
+    [SerializeField] private TextMeshProUGUI timerPlus;
+
     private Animator animator;
 
     private void Awake()
@@ -31,22 +33,24 @@ public class DeliveryUI : MonoBehaviour
         Hide();
     }
 
-    private void DeliveryManager_OnDeliveredFail(object sender, System.EventArgs e)
+    private void DeliveryManager_OnDeliveredFail(object sender, DeliveryManager.OnDeliveredFailArgs e)
     {
         Show();
         animator.SetTrigger(POPUP);
         backgroundImage.color = failColor;
         iconImage.sprite = failIcon;
         messageText.text = "DELIVERD\nFAIL";
+        timerPlus.text = $"+{e.timePlus.ToString()}s";
     }
 
-    private void DeliveryManager_OnDeliveredSuccess(object sender, System.EventArgs e)
+    private void DeliveryManager_OnDeliveredSuccess(object sender, DeliveryManager.OnDeliveredSuccessArgs e)
     {
         Show();
         animator.SetTrigger(POPUP);
         backgroundImage.color = successColor;
         iconImage.sprite = successIcon;
         messageText.text = "DELIVERD\nSUCCESS";
+        timerPlus.text = $"+{e.timePlus.ToString()}s";
     }
 
     private void Show()

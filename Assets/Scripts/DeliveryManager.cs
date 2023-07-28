@@ -5,10 +5,20 @@ using UnityEngine;
 
 public class DeliveryManager : MonoBehaviour
 {
-    public event EventHandler OnDeliveredSuccess;
-    public event EventHandler OnDeliveredFail;
+    public event EventHandler<OnDeliveredSuccessArgs> OnDeliveredSuccess;
+    public event EventHandler<OnDeliveredFailArgs> OnDeliveredFail;
     public event EventHandler OnSpawnedRecipe;
     public event EventHandler OnCompletedRecipe;
+
+    public class OnDeliveredSuccessArgs : EventArgs
+    {
+        public float timePlus;
+    }
+
+    public class OnDeliveredFailArgs : EventArgs
+    {
+        public float timePlus;
+    }
 
     public static DeliveryManager Instance { get; private set; }
 
@@ -78,15 +88,16 @@ public class DeliveryManager : MonoBehaviour
                     Debug.Log("Player delivered correct recipe");
                     this.recipesDeliveredSuccessCount++;
                     this.waitinggRecipeSOList.RemoveAt(i);
+                    GameManager.Instance.AddMorePlayTime(waitingRecipeSO.cookingTime);
                     OnCompletedRecipe?.Invoke(this, EventArgs.Empty);
-                    OnDeliveredSuccess?.Invoke(this, EventArgs.Empty);
+                    OnDeliveredSuccess?.Invoke(this, new OnDeliveredSuccessArgs { timePlus = waitingRecipeSO.cookingTime });
                     return;
                 }
             }
         }
         //No matches found
         Debug.Log("Player delivered wrong recipe !");
-        OnDeliveredFail?.Invoke(this, EventArgs.Empty);
+        OnDeliveredFail?.Invoke(this, new OnDeliveredFailArgs { timePlus = 0f });
     }
 
     public List<RecipeSO> GetWaitingRecipeListSO()
