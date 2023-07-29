@@ -95,6 +95,11 @@ public class GameManager : MonoBehaviour
         return this.state == State.GameOver;
     }
 
+    public bool IsWaitingToStart()
+    {
+        return this.state == State.WaitingToStart;
+    }
+
     public float GetCountdownTimer()
     {
         return this.countDownTimer;
