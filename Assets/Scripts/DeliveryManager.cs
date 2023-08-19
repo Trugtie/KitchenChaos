@@ -85,7 +85,7 @@ public class DeliveryManager : MonoBehaviour
                 }
                 if (isPlateIngredientMatchesRecipe)
                 {
-                    Debug.Log("Player delivered correct recipe");
+
                     this.recipesDeliveredSuccessCount++;
                     this.waitinggRecipeSOList.RemoveAt(i);
                     GameManager.Instance.AddMorePlayTime(waitingRecipeSO.cookingTime);
@@ -96,7 +96,7 @@ public class DeliveryManager : MonoBehaviour
             }
         }
         //No matches found
-        Debug.Log("Player delivered wrong recipe !");
+
         OnDeliveredFail?.Invoke(this, new OnDeliveredFailArgs { timePlus = 0f });
     }
 
